@@ -12,4 +12,18 @@ public class ServiceRequest {
         this.studentId = studentId;
         this.request = request;
     }
+
+    public String getStudentId() {
+    return studentId;
+}
+
+public String getRequest() {
+    return request;
+}
+
+@Override
+public String toString() {
+
+    return studentId + " - " + request;
+}
 }
