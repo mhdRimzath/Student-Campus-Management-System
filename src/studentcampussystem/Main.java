@@ -49,7 +49,21 @@ public class Main {
             }
 
             switch (choice) {
+               case 1:
+                    addStudent();
+                    break;
 
+                case 2:
+                    updateStudent();
+                    break;
+
+                case 3:
+                    deleteStudent();
+                    break;
+
+                case 4:
+                    studentList.displayAllStudents();
+                    break;
                 
 
                 case 16:
@@ -120,5 +134,165 @@ public class Main {
         System.out.println("16. Exit");
     }
 
+private static void addStudent() {
+
+    System.out.print("Student ID: ");
+    String id = scanner.nextLine().trim();
+
+    if (id.isEmpty()) {
+
+        System.out.println(
+                "Student ID cannot be empty.");
+
+        return;
+    }
+
+    if (studentList.searchStudent(id) != null) {
+
+        System.out.println(
+                "Student ID already exists.");
+
+        return;
+    }
+
+    System.out.print("Name: ");
+    String name = scanner.nextLine().trim();
+
+    System.out.print("Programme: ");
+    String programme = scanner.nextLine().trim();
+
+    double marks;
+
+    try {
+
+        System.out.print("Marks: ");
+
+        marks = Double.parseDouble(
+                scanner.nextLine());
+
+    } catch (NumberFormatException e) {
+
+        System.out.println(
+                "Invalid marks.");
+
+        return;
+    }
+
+    if (marks < 0 || marks > 100) {
+
+        System.out.println(
+                "Marks must be between 0 and 100.");
+
+        return;
+    }
+
+    Student student =
+            new Student(
+                    id,
+                    name,
+                    programme,
+                    marks);
+
+    if (studentList.addStudent(student)) {
+
+        studentBST.insert(student);
+
+        hashTable.put(student);
+
+        actionStack.push(
+                "Added student: " + id);
+
+        System.out.println(
+                "Student added successfully.");
+    }
+}
+
+private static void updateStudent() {
+
+    System.out.print("Student ID: ");
+    String id = scanner.nextLine().trim();
+
+    Student student =
+            studentList.searchStudent(id);
+
+    if (student == null) {
+
+        System.out.println(
+                "Student not found.");
+
+        return;
+    }
+
+    System.out.print("New Name: ");
+    String name = scanner.nextLine().trim();
+
+    System.out.print("New Programme: ");
+    String programme =
+            scanner.nextLine().trim();
+
+    try {
+
+        System.out.print("New Marks: ");
+
+        double marks =
+                Double.parseDouble(
+                        scanner.nextLine());
+
+        if (marks < 0 || marks > 100) {
+
+            System.out.println(
+                    "Marks must be between 0 and 100.");
+
+            return;
+        }
+
+        if (studentList.updateStudent(
+                id,
+                name,
+                programme,
+                marks)) {
+
+            hashTable.put(student);
+
+            actionStack.push(
+                    "Updated student: " + id);
+
+            System.out.println(
+                    "Student updated successfully.");
+        }
+
+    } catch (NumberFormatException e) {
+
+        System.out.println(
+                "Invalid marks.");
+    }
+}
+
+private static void deleteStudent() {
+
+    System.out.print("Student ID: ");
+
+    String id =
+            scanner.nextLine().trim();
+
+    Student deleted =
+            studentList.deleteStudent(id);
+
+    if (deleted == null) {
+
+        System.out.println(
+                "Student not found.");
+
+        return;
+    }
+
+    hashTable.remove(id);
+
+    actionStack.push(
+            "Deleted student: " + id);
+
+    System.out.println(
+            "Student deleted successfully.");
+}
     
 }
