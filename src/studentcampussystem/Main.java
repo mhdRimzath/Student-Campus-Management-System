@@ -64,6 +64,18 @@ public class Main {
                 case 4:
                     studentList.displayAllStudents();
                     break;
+
+                case 5:
+                    addServiceRequest();
+                    break;
+
+                case 6:
+                    processServiceRequest();
+                    break;
+
+                case 7:
+                    actionStack.displayActions();
+                    break;
                 
 
                 case 16:
@@ -294,5 +306,78 @@ private static void deleteStudent() {
     System.out.println(
             "Student deleted successfully.");
 }
+
+private static void addServiceRequest() {
+
+    System.out.print(
+            "Student ID: ");
+
+    String studentId =
+            scanner.nextLine().trim();
+
+    Student student =
+            studentList.searchStudent(
+                    studentId);
+
+    if (student == null) {
+
+        System.out.println(
+                "Student does not exist.");
+
+        return;
+    }
+
+    System.out.print(
+            "Service Request: ");
+
+    String request =
+            scanner.nextLine().trim();
+
+    if (request.isEmpty()) {
+
+        System.out.println(
+                "Request cannot be empty.");
+
+        return;
+    }
+
+    ServiceRequest serviceRequest =
+            new ServiceRequest(
+                    studentId,
+                    request);
+
+    serviceQueue.enqueue(
+            serviceRequest);
+
+    actionStack.push(
+            "Added service request for "
+            + studentId);
+
+    System.out.println(
+            "Service request added.");
+}
+
+private static void processServiceRequest() {
+
+    ServiceRequest request =
+            serviceQueue.dequeue();
+
+    if (request == null) {
+
+        System.out.println(
+                "No service requests.");
+
+        return;
+    }
+
+    System.out.println(
+            "Processing: " + request);
+
+    actionStack.push(
+            "Processed request for "
+            + request.getStudentId());
+}
+
+
     
 }
