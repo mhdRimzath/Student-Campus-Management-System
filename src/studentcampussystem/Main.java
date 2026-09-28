@@ -77,6 +77,14 @@ public class Main {
                     actionStack.displayActions();
                     break;
                 
+                case 8:
+                    studentBST.displayInOrder();
+                    break;
+
+                case 9:
+                    searchStudentUsingHash();
+                    break;
+                
 
                 case 16:
                     System.out.println(
@@ -376,6 +384,31 @@ private static void processServiceRequest() {
     actionStack.push(
             "Processed request for "
             + request.getStudentId());
+}
+
+private static void searchStudentUsingHash() {
+
+    System.out.print(
+            "Enter Student ID: ");
+
+    String id =
+            scanner.nextLine().trim();
+
+    Student student =
+            hashTable.search(id);
+
+    if (student == null) {
+
+        System.out.println(
+                "Student not found.");
+
+    } else {
+
+        System.out.println(
+                "Student found:");
+
+        student.displayStudent();
+    }
 }
 
 
