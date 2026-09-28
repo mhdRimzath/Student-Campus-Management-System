@@ -54,4 +54,71 @@ public class StudentBST {
 
         return current;
     }
+
+    public Student search(String studentId) {
+
+    return searchRecursive(
+            root,
+            studentId);
+}
+
+private Student searchRecursive(
+        Node current,
+        String studentId) {
+
+    if (current == null) {
+
+        return null;
+    }
+
+    int compare =
+            studentId.compareToIgnoreCase(
+                    current.student
+                           .getStudentId());
+
+    if (compare == 0) {
+
+        return current.student;
+
+    } else if (compare < 0) {
+
+        return searchRecursive(
+                current.left,
+                studentId);
+
+    } else {
+
+        return searchRecursive(
+                current.right,
+                studentId);
+    }
+}
+
+public void displayInOrder() {
+
+    if (root == null) {
+
+        System.out.println(
+                "No students in BST.");
+
+        return;
+    }
+
+    displayRecursive(root);
+}
+
+private void displayRecursive(
+        Node current) {
+
+    if (current != null) {
+
+        displayRecursive(
+                current.left);
+
+        current.student.displayStudent();
+
+        displayRecursive(
+                current.right);
+    }
+}
 }
