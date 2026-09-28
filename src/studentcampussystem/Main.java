@@ -82,8 +82,32 @@ public class Main {
                     break;
 
                 case 9:
-                    searchStudentUsingHash();
-                    break;
+                        searchStudentUsingHash();
+                        break;
+
+                case 10:
+                        addCampusLocation();
+                        break;
+
+                case 11:
+                        removeCampusLocation();
+                        break;
+
+                case 12:
+                        addCampusConnection();
+                        break;
+
+                case 13:
+                        removeCampusConnection();
+                        break;
+
+                case 14:
+                        campusGraph.displayConnections();
+                        break;
+
+                case 15:
+                        traverseCampus();
+                        break;
                 
 
                 case 16:
@@ -409,6 +433,119 @@ private static void searchStudentUsingHash() {
 
         student.displayStudent();
     }
+}
+
+private static void addCampusLocation() {
+
+    System.out.print(
+            "Location Name: ");
+
+    String location =
+            scanner.nextLine().trim();
+
+    if (location.isEmpty()) {
+
+        System.out.println(
+                "Location cannot be empty.");
+
+        return;
+    }
+
+    campusGraph.addLocation(location);
+}
+
+private static void removeCampusLocation() {
+
+    System.out.print(
+            "Location Name: ");
+
+    String location =
+            scanner.nextLine().trim();
+
+    if (location.isEmpty()) {
+
+        System.out.println(
+                "Location cannot be empty.");
+
+        return;
+    }
+
+    campusGraph.removeLocation(location);
+}
+
+private static void addCampusConnection() {
+
+    System.out.print(
+            "First Location: ");
+
+    String first =
+            scanner.nextLine().trim();
+
+    System.out.print(
+            "Second Location: ");
+
+    String second =
+            scanner.nextLine().trim();
+
+    if (first.isEmpty()
+            || second.isEmpty()) {
+
+        System.out.println(
+                "Location names cannot be empty.");
+
+        return;
+    }
+
+    campusGraph.addConnection(
+            first,
+            second);
+}
+
+private static void removeCampusConnection() {
+
+    System.out.print(
+            "First Location: ");
+
+    String first =
+            scanner.nextLine().trim();
+
+    System.out.print(
+            "Second Location: ");
+
+    String second =
+            scanner.nextLine().trim();
+
+    if (first.isEmpty()
+            || second.isEmpty()) {
+
+        System.out.println(
+                "Location names cannot be empty.");
+
+        return;
+    }
+
+    campusGraph.removeConnection(
+            first,
+            second);
+}
+
+private static void traverseCampus() {
+
+    System.out.print(
+            "Starting Location: ");
+
+    String start =
+            scanner.nextLine().trim();
+
+    if (start.isEmpty()) {
+
+        System.out.println(
+                "Starting location cannot be empty.");
+
+        return;
+    }
+
+    campusGraph.bfs(start);
 }
 
 
