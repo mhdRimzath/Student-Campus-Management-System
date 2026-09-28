@@ -49,4 +49,67 @@ public class StudentHashTable {
         table[index] =
                 newNode;
     }
+
+    public Student search(
+        String studentId) {
+
+    int index =
+            hash(studentId);
+
+    HashNode current =
+            table[index];
+
+    while (current != null) {
+
+        if (current.studentId
+                .equalsIgnoreCase(
+                        studentId)) {
+
+            return current.student;
+        }
+
+        current = current.next;
+    }
+
+    return null;
+}
+
+public boolean remove(
+        String studentId) {
+
+    int index =
+            hash(studentId);
+
+    HashNode current =
+            table[index];
+
+    HashNode previous = null;
+
+    while (current != null) {
+
+        if (current.studentId
+                .equalsIgnoreCase(
+                        studentId)) {
+
+            if (previous == null) {
+
+                table[index] =
+                        current.next;
+
+            } else {
+
+                previous.next =
+                        current.next;
+            }
+
+            return true;
+        }
+
+        previous = current;
+
+        current = current.next;
+    }
+
+    return false;
+}
 }
