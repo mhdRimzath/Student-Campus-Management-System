@@ -3,6 +3,8 @@ package studentcampussystem;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class CampusGraph {
 
@@ -87,4 +89,69 @@ public class CampusGraph {
                     + graph.get(location));
         }
     }
+    public void removeConnection(
+        String first,
+        String second) {
+
+    if (!graph.containsKey(first)
+            || !graph.containsKey(second)) {
+
+        System.out.println(
+                "Location not found.");
+
+        return;
+    }
+
+    graph.get(first)
+            .remove(second);
+
+    graph.get(second)
+            .remove(first);
+}
+
+public void bfs(
+        String start) {
+
+    if (!graph.containsKey(start)) {
+
+        System.out.println(
+                "Starting location not found.");
+
+        return;
+    }
+
+    ArrayList<String> visited =
+            new ArrayList<>();
+
+    Queue<String> queue =
+            new LinkedList<>();
+
+    queue.add(start);
+    visited.add(start);
+
+    while (!queue.isEmpty()) {
+
+        String current =
+                queue.poll();
+
+        System.out.print(
+                current + " ");
+
+        for (String neighbour
+                : graph.get(current)) {
+
+            if (!visited.contains(
+                    neighbour)) {
+
+                visited.add(
+                        neighbour);
+
+                queue.add(
+                        neighbour);
+            }
+        }
+    }
+
+    System.out.println();
+}
 }
