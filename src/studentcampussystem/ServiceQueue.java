@@ -33,5 +33,46 @@ public class ServiceQueue {
         }
     }
 
-    
+   public ServiceRequest dequeue() {
+
+    if (front == null) {
+        return null;
+    }
+
+    ServiceRequest request =
+            front.request;
+
+    front = front.next;
+
+    if (front == null) {
+        rear = null;
+    }
+
+    return request;
+}
+
+public boolean isEmpty() {
+    return front == null;
+}
+
+public void displayQueue() {
+
+    if (front == null) {
+
+        System.out.println(
+                "Service queue is empty.");
+
+        return;
+    }
+
+    Node current = front;
+
+    while (current != null) {
+
+        System.out.println(
+                current.request);
+
+        current = current.next;
+    }
+} 
 }
