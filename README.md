@@ -76,10 +76,10 @@ Marks      : 78.5
 
 | No. | Student Name | Student ID | Role | Responsibility | Individual Contribution | Branch |
 |---|---|---|---|---|---|---|
-| 1 | ABM. Rimzath | 23DA2-0687 | **Team Leader** | Linked List and Student Record Management | Student model, add, search, update, delete and display student records | `member1-linkedlist` |
-| 2 | MFM. Usama | 23DA2-0971 | Member | Stack and Queue Implementation | Recent action history and student service request management | `member2-stack-queue` |
-| 3 | AGM. Sujath | 23DA2-1133 | Member | BST and Hashing Implementation | BST insertion/search/display and Hash Table insertion/search/removal | `member3-bst-hashing` |
-| 4 | ANM. Imthath | 23DA2-0882 | Member | Graph and BFS Implementation | Campus locations, connections, removal, network display and BFS traversal | `member4-graph` |
+| 1 | ABM. Rimzath | 23DA2-0687 | **Team Leader** | Linked List and Student Record Management | Student model, add, search, update, delete and display student records | `Rimzath-linkedlist` |
+| 2 | MFM. Usama | 23DA2-0971 | Member | Stack and Queue Implementation | Recent action history and student service request management | `Usama-stack-queue` |
+| 3 | AGM. Sujath | 23DA2-1133 | Member | BST and Hashing Implementation | BST insertion/search/display and Hash Table insertion/search/removal | `Sujath-bst-hashing` |
+| 4 | ANM. Imthath | 23DA2-0882 | Member | Graph and BFS Implementation | Campus locations, connections, removal, network display and BFS traversal | `Imthath-graph` |
 
 As team leader, Member 1 (ABM. Rimzath) additionally coordinated branch merging, integration of all members' work into `Main.java`, and overall project submission.
 
